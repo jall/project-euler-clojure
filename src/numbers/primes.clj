@@ -5,8 +5,8 @@
   Currently only skips even numbers (assuming base case of 2)."
   [divisor]
   (if (even? divisor)
-    (+ 1 divisor)
-    (+ 2 divisor)))
+    (+' 1 divisor)
+    (+' 2 divisor)))
 
 (defn divisible-by?
   [number divisor]
@@ -22,6 +22,6 @@
      divisors
      (if (divisible-by? number divisor)
        ; Extract divisor from the number & append to divisors
-       (prime-factors (quot number divisor) divisor (cons divisor divisors))
+       (recur (quot number divisor) divisor (conj divisors divisor))
        ; Move on to next divisor
-       (prime-factors number (next-divisor divisor) divisors)))))
+       (recur number (next-divisor divisor) divisors)))))
