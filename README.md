@@ -6,4 +6,4 @@ Written in Clojure [this time](https://github.com/jall/project-euler-go), both t
 
 ## License
 
-[MIT.](https://github.com/jall/project-euler-clojure/blob/master/README.md)
+[MIT.](https://github.com/jall/project-euler-clojure/blob/master/LICENSE)
