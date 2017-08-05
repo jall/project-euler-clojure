@@ -3,7 +3,8 @@
   :url "https://github.com/jall/project-euler-clojure"
   :license {:name "MIT"
             :url "https://opensource.org/licenses/MIT"}
-  :dependencies [[org.clojure/clojure "1.8.0"]]
+  :dependencies [[org.clojure/clojure "1.8.0"]
+                 [org.clojure/math.numeric-tower "0.0.4"]]
   :main ^:skip-aot project-euler-clojure.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})

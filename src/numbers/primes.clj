@@ -25,3 +25,12 @@
        (recur (quot number divisor) divisor (conj divisors divisor))
        ; Move on to next divisor
        (recur number (next-divisor divisor) divisors)))))
+
+(defn aggregate-primes [primes, prime]
+  (conj primes {prime (inc (get primes prime 0))}))
+
+(defn prime-factors-grouped
+  "Returns a map of the numbers prime factors, where keys are the primes
+  and values are the power the primes are raised to in the factorisation."
+  [number]
+  (reduce aggregate-primes {} (prime-factors number)))
