@@ -1,6 +1,6 @@
 (ns q-003.core
   (:gen-class)
-  (:require [numbers.primes :refer [prime-factors]]))
+  (:require [numbers.prime-factors :refer [prime-factors]]))
 
 (defn -main
   "Largest prime factor"

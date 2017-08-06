@@ -1,6 +1,6 @@
 (ns q-005.core
   (:gen-class)
-  (:require [numbers.primes :refer [prime-factors-grouped]]
+  (:require [numbers.prime-factors :refer [prime-factors-grouped]]
             [clojure.math.numeric-tower :refer [expt]]))
 
 (defn greatest-shared-prime-factors [numbers]

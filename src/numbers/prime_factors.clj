@@ -1,4 +1,4 @@
-(ns numbers.primes)
+(ns numbers.prime-factors)
 
 (defn next-divisor
   "Figure out the next best divisor to use.
