@@ -9,7 +9,7 @@
     (+' 2 divisor)))
 
 (defn divisible-by?
-  [number divisor]
+  [divisor number]
   (zero? (mod number divisor)))
 
 (defn prime-factors
@@ -20,7 +20,7 @@
     ; Base case - if number has been cut down to one, then return divisors.
    (if (= 1 number)
      divisors
-     (if (divisible-by? number divisor)
+     (if (divisible-by? divisor number)
        ; Extract divisor from the number & append to divisors
        (recur (quot number divisor) divisor (conj divisors divisor))
        ; Move on to next divisor
