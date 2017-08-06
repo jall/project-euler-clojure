@@ -1,11 +1,10 @@
 (ns q-007.core
   (:gen-class)
-  (:require [numbers.primes :refer [prime-seq]]))
+  (:require [numbers.primes :refer [prime-sieve probably-prime-sieve]]))
 
 (defn -main
   "10001st prime"
   [& args]
-  ; Holy shit this is slow for longer seqs (i.e. >100)
-  (def answer (take 100 (prime-seq)))
+  (def answer (nth (prime-sieve 2e6) 10000))
   (println answer)
   answer)

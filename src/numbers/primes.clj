@@ -1,33 +1,56 @@
-(ns numbers.primes   (:gen-class)
-  (:require [numbers.prime-factors :refer [divisible-by?]]))
+(ns numbers.primes)
 
-(defn range-from
-  "Infinite seq starting from specified value"
-  [start]
-  (iterate inc start))
+; Shamelessly stolen from https://stackoverflow.com/a/16273847
+; I like this one because it's pure Clojure & I can actually understand it,
+; plus it's pretty quick.
+; My original attempt at a lazy seq of primes did work but it was shockingly slow.
+; I think my problem was dividing all candidate numbers by all primes found so far,
+; plus there were almost certainly inefficiencies in my Clojure style.
 
-(defn not-multiple-of [number]
-  (complement (partial divisible-by? number)))
-
-(defn filter-multiples
-  "Remove multiples of a number from a seq"
-  [number seq]
-  (filter (not-multiple-of number) seq))
-
-(defn candidate-range
-  "Returns a range of numbers which aren't multiples of primes found so far"
-  [primes]
-  (reduce
-    (fn [candidates prime]
-      ; Apply filters all at once with some to reduce duplicate filtering?
-      (filter-multiples prime candidates))
-    (range-from (last primes))
+(defn cleanse
+  "Walks through the sieve and nils out multiples of step"
+  [primes step i]
+  (if (<= i (count primes))
+    (recur
+      (assoc! primes i nil)
+      step
+      (+ i step))
     primes))
 
-(defn prime-seq
-  "An infinite lazy sequence of primes"
-  ([]
-   (cons 2 (prime-seq '(2))))
-  ([primes]
-   (let [prime (first (candidate-range primes))]
-     (cons prime (lazy-seq (prime-seq (cons prime primes)))))))
+(defn sieve-step
+  "Only works if i is >= 3"
+  [primes i]
+  (if (< i (count primes))
+    (recur
+      (if (nil? (primes i)) primes (cleanse primes (* 2 i) (* i i)))
+      (+ 2 i))
+    primes))
+
+(defn prime-sieve
+  "Returns a lazy list of all primes smaller than x"
+  [limit]
+  (drop 2
+        (filter (complement nil?)
+                (persistent! (sieve-step
+                               (cleanse (transient (vec (range limit))) 2 4) 3)))))
+
+; This version is even more interesting; uses Java's BigInteger#isProbablePrime
+; https://stackoverflow.com/a/7941430
+; Change the certainty value to increase the likelihood that numbers are prime
+; (makes it slower, obviously).
+; Uses the Miller-Rabin primality test under the hood
+; https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test
+
+(def certainty 5)
+
+(defn prime? [n]
+  (.isProbablePrime (BigInteger/valueOf n) certainty))
+
+(defn probably-prime-sieve
+  "docstring"
+  [limit]
+  (concat [2] (take limit
+                    (filter prime?
+                            (take-nth 2
+                                      (range 1 Integer/MAX_VALUE))))))
+
