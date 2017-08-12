@@ -1,5 +1,6 @@
 (ns project-euler-clojure.core
-  (:gen-class))
+  (:gen-class)
+  (:require [clojure.math.numeric-tower :refer :all]))
 
 (defn -main
   [& args]
