@@ -1,4 +1,6 @@
-# project-euler-clojure
+# Project Euler (clojure)
+
+[![Build Status](https://travis-ci.org/jall/project-euler-clojure.svg?branch=master)](https://travis-ci.org/jall/project-euler-clojure)
 
 My solutions to [Project Euler](https://projecteuler.net) problems. 
 
