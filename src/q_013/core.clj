@@ -1,7 +1,5 @@
 (ns q-013.core
-  (:gen-class)
-  (:require [numbers.divisors :refer [proper-divisors]]
-            [numbers.triangle :refer [triangle-numbers]]))
+  (:gen-class))
 
 (def numbers
   [
