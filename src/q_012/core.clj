@@ -1,17 +1,8 @@
 (ns q-012.core
   (:gen-class)
   (:require [numbers.prime-factors :refer [prime-factors]]
+            [numbers.triangle :refer [triangle-numbers]]
             [clojure.math.combinatorics :as combinatorics]))
-
-(defn triangle-numbers
-  "Lazy sequence of triangle numbers"
-  ([]
-    (triangle-numbers '(1)))
-  ([set]
-    (let [previous (first set)
-          increment (inc (count set))
-          next (+' previous increment)]
-      (lazy-seq (cons previous (triangle-numbers (cons next set)))))))
 
 (defn proper-divisors
   "Returns a map of all proper divisors of a number"
