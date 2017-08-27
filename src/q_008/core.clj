@@ -1,11 +1,6 @@
 (ns q-008.core
-  (:gen-class))
-
-(defn character-to-digit [^Character character]
-  (Character/getNumericValue character))
-
-(defn string-to-digits [string]
-  (map character-to-digit string))
+  (:gen-class)
+  (:require [strings.conversion :refer [string-to-digits]]))
 
 (defn digit-product
   "Finds the product of a string of numbers"
