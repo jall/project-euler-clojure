@@ -5,7 +5,8 @@
             :url "https://opensource.org/licenses/MIT"}
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [org.clojure/math.numeric-tower "0.0.4"]
-                 [org.clojure/math.combinatorics "0.1.4"]]
+                 [org.clojure/math.combinatorics "0.1.4"]
+                 [clj-time "0.14.0"]]
   :main ^:skip-aot project-euler-clojure.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}}
