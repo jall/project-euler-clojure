@@ -1,4 +1,5 @@
-(ns strings.conversion)
+(ns strings.conversion
+  (:gen-class))
 
 (defn character-to-digit [^Character character]
   (Character/getNumericValue character))
