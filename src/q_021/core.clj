@@ -8,7 +8,6 @@
       (if (zero? n)
         0
         (->> (proper-divisors n)
-             (remove #(= n %))
              (apply +))))))
 
 (defn amicable? [a]

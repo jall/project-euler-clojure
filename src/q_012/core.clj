@@ -1,11 +1,11 @@
 (ns q-012.core
   (:gen-class)
-  (:require [numbers.divisors :refer [proper-divisors]]
+  (:require [numbers.divisors :refer [divisors]]
             [numbers.triangle :refer [triangle-numbers]]))
 
 (defn over-500-divisors?
   [number]
-  (< 500 (count (proper-divisors number))))
+  (< 500 (count (divisors number))))
 
 (defn -main
   "Highly divisible triangular number"
