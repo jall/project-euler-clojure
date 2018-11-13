@@ -2,8 +2,7 @@
   (:gen-class))
 
 (def triangle
-  [
-   [75]
+  [[75]
    [95 64]
    [17 47 82]
    [18 35 87 10]
@@ -17,28 +16,27 @@
    [70 11 33 28 77 73 17 78 39 68 17 57]
    [91 71 52 38 17 14 91 43 58 50 27 29 48]
    [63 66 4 68 89 53 67 30 73 16 69 87 40 31]
-   [4 62 98 27 23 9 70 98 73 93 38 53 60 4 23]
-   ])
+   [4 62 98 27 23 9 70 98 73 93 38 53 60 4 23]])
 
 (defn sum-parent-and-greatest-child [parent child]
   (reduce-kv
-    (fn [vec position value]
-      (conj vec
-            (if (< (nth child position) (nth child (inc position)))
-              (+ value (nth child (inc position)))
-              (+ value (nth child position)))))
-    []
-    parent))
+   (fn [vec position value]
+     (conj vec
+           (if (< (nth child position) (nth child (inc position)))
+             (+ value (nth child (inc position)))
+             (+ value (nth child position)))))
+   []
+   parent))
 
 (defn greatest-path-in-triangle [triangle]
   (if (= 1 (count triangle))
     (first (first triangle))
 
     (greatest-path-in-triangle
-      (let [parent-row (second triangle)
-            child-row (first triangle)
-            remaining (nthrest triangle 2)]
-        (conj remaining (sum-parent-and-greatest-child parent-row child-row))))))
+     (let [parent-row (second triangle)
+           child-row (first triangle)
+           remaining (nthrest triangle 2)]
+       (conj remaining (sum-parent-and-greatest-child parent-row child-row))))))
 
 (defn -main
   "Maximum path sum I"

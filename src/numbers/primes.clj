@@ -12,9 +12,9 @@
   [primes step i]
   (if (<= i (count primes))
     (recur
-      (assoc! primes i nil)
-      step
-      (+ i step))
+     (assoc! primes i nil)
+     step
+     (+ i step))
     primes))
 
 (defn sieve-step
@@ -22,8 +22,8 @@
   [primes i]
   (if (< i (count primes))
     (recur
-      (if (nil? (primes i)) primes (cleanse primes (* 2 i) (* i i)))
-      (+ 2 i))
+     (if (nil? (primes i)) primes (cleanse primes (* 2 i) (* i i)))
+     (+ 2 i))
     primes))
 
 (defn prime-sieve
@@ -32,7 +32,7 @@
   (drop 2
         (filter (complement nil?)
                 (persistent! (sieve-step
-                               (cleanse (transient (vec (range limit))) 2 4) 3)))))
+                              (cleanse (transient (vec (range limit))) 2 4) 3)))))
 
 ; This version is even more interesting; uses Java's BigInteger#isProbablePrime
 ; https://stackoverflow.com/a/7941430

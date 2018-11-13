@@ -15,15 +15,15 @@
 (defn lehmer-code-to-permutation
   "Takes a sequence of items and permutes them according to the Lehmer code specified"
   ([original code]
-    (lehmer-code-to-permutation original code []))
+   (lehmer-code-to-permutation original code []))
   ([original code permutation]
    (if (zero? (count code))
      permutation
      (let [position (first code)]
        (recur
-         (vec (concat (subvec original 0 position) (subvec original (inc position))))
-         (vec (rest code))
-         (conj permutation (nth original position)))))))
+        (vec (concat (subvec original 0 position) (subvec original (inc position))))
+        (vec (rest code))
+        (conj permutation (nth original position)))))))
 
 (defn numbers-to-string [numbers]
   (apply str numbers))

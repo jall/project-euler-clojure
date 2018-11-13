@@ -3,4 +3,4 @@
             [q-004.core :refer :all]))
 
 (deftest q-004-test
-    (is (= (-main) 906609)))
+  (is (= (-main) 906609)))

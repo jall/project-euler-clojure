@@ -8,23 +8,23 @@
 (defn pythagorean-triples-from-seed
   [n m]
   (list
-    (- (* m m) (* n n))
-    (* 2 m n)
-    (+ (* m m) (* n n))))
+   (- (* m m) (* n n))
+   (* 2 m n)
+   (+ (* m m) (* n n))))
 
 (defn pythagorean-triples-primitive
   ([limit]
    (pythagorean-triples-primitive limit 1 2 '()))
   ([limit n m triples]
    (if
-     (< limit n)
+    (< limit n)
      triples
      (if
-       (< limit m)
+      (< limit m)
        (recur limit (+ n 1) (+ n 2) triples)
        (if
-         (and (not (and (odd? n) (odd? m)))
-              (co-prime? n m))
+        (and (not (and (odd? n) (odd? m)))
+             (co-prime? n m))
          (recur limit n (inc m) (cons (pythagorean-triples-from-seed n m) triples))
          (recur limit n (inc m) triples))))))
 

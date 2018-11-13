@@ -12,13 +12,13 @@
   "Names scores"
   [& args]
   (def answer (as-> (slurp "src/q_022/names.txt") names
-                    (string/replace names "\"" "")
-                    (string/split names #",")
-                    (sort names)
-                    (into [] names)
-                    (map-indexed (fn [index name]
-                                   (* (inc index) (name->score name)))
-                                 names)
-                    (apply + names)))
+                (string/replace names "\"" "")
+                (string/split names #",")
+                (sort names)
+                (into [] names)
+                (map-indexed (fn [index name]
+                               (* (inc index) (name->score name)))
+                             names)
+                (apply + names)))
   (println answer)
   answer)

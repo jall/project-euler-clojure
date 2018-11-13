@@ -8,10 +8,10 @@
 
 (def collatz-sequence
   (memoize
-    (fn [n]
-      (if (= 1 n)
-        (list 1)
-        (cons n (collatz-sequence (collatz-next n)))))))
+   (fn [n]
+     (if (= 1 n)
+       (list 1)
+       (cons n (collatz-sequence (collatz-next n)))))))
 
 (defn collatz-sequence-length [n]
   (count (collatz-sequence n)))

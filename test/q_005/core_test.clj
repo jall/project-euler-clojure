@@ -3,4 +3,4 @@
             [q-005.core :refer :all]))
 
 (deftest q-005-test
-    (is (= (-main) 232792560)))
+  (is (= (-main) 232792560)))

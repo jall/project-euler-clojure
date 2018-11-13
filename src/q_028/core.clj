@@ -17,7 +17,6 @@
   ; Add 1 to final result for center value, start n from 3 to skip center.
   (let [answer (inc (->> (take-while #(>= 1001 %) (iterate #(+ 2 %) 3))
                          (map corner-sum)
-                         (apply +)
-                         ))]
+                         (apply +)))]
     (println answer)
     answer))

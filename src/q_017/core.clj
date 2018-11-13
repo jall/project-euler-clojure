@@ -31,33 +31,33 @@
         ;; handle million part
         (>= digitcnt 6)    (if (divisible? num 1000000)
                              (str/join " " [(numberword (int (/ num 1000000)))
-                                        "million"])
+                                            "million"])
                              (str/join " " [(numberword (int (/ num 1000000)))
-                                        "million"
-                                        (numberword (rem num 1000000))]))
+                                            "million"
+                                            (numberword (rem num 1000000))]))
 
         ;; handle thousand part
         (>= digitcnt 3)    (if (divisible? num 1000)
                              (str/join " " [(numberword (int (/ num 1000)))
-                                        "thousand"])
+                                            "thousand"])
                              (str/join " " [(numberword (int (/ num 1000)))
-                                        "thousand"
-                                        (numberword (rem num 1000))]))
+                                            "thousand"
+                                            (numberword (rem num 1000))]))
 
         ;; handle hundred part
         (>= digitcnt 2)    (if (divisible? num 100)
                              (str/join " " [(numap (int (/ num 100)))
-                                        "hundred"])
+                                            "hundred"])
                              (str/join " " [(numap (int (/ num 100)))
-                                        "hundred"
-                                        "and"
-                                        (numberword (rem num 100))]))
+                                            "hundred"
+                                            "and"
+                                            (numberword (rem num 100))]))
 
         ;; handle the last two digits
         (< num 20)                 (numap num)
         (divisible? num 10)        (numap num)
         :else                      (str/join "-" [(numap (* 10 (n-digit num 0)))
-                                              (numap (n-digit num 1))])))))
+                                                  (numap (n-digit num 1))])))))
 
 (defn -main
   "Number letter counts"

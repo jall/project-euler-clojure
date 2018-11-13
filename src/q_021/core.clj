@@ -4,11 +4,11 @@
 
 (def d
   (memoize
-    (fn [n]
-      (if (zero? n)
-        0
-        (->> (proper-divisors n)
-             (apply +))))))
+   (fn [n]
+     (if (zero? n)
+       0
+       (->> (proper-divisors n)
+            (apply +))))))
 
 (defn amicable? [a]
   (let [b (d a)]
